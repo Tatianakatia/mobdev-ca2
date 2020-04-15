@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-characters',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./characters.page.scss'],
 })
 export class CharactersPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  
+    characters: Observable<any>;
+  
+    constructor(private router: Router, private api: ApiService) { }
+  
+    ngOnInit() {
+      this.characters = this.api.getCharacters();
   }
-
 }
