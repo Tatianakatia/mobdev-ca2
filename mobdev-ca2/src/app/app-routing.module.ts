@@ -4,10 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
  { path: '', loadChildren: () => import('./pages/tabs/tabs.module').then( m => 
-    m.TabsPageModule)},
-
+    m.TabsPageModule)}
 ];
-
 
 @NgModule({
   imports: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
@@ -12,10 +13,13 @@ export class QuotesPage implements OnInit {
   
     quotes: Observable<any>;
   
-    constructor(private router: Router, private api: ApiService) { }
+    constructor(private navController: NavController, private router: Router, private api: ApiService) { }
   
     ngOnInit() {
       this.quotes = this.api.getQuotes();
+            this.quotes.subscribe(data => {
+            console.log('my data: ', data);
+        })
   }
 }
 
