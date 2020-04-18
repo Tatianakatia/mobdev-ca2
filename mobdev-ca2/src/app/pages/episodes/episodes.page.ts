@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+//import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
@@ -13,17 +13,20 @@ export class EpisodesPage implements OnInit {
 
     episodes: Observable<any>;
 
-    constructor(private navController: NavController, private router: Router, private api: ApiService) { }
+    constructor( private router: Router, private api: ApiService) { }
 
     ngOnInit() {
         this.episodes = this.api.getEpisodes();
         this.episodes.subscribe(data => {
             console.log('my data: ', data);
         })
+    
+    
     }
 
-    openDetails(episode) {
-        let episodeId = episode.edpisode_id;
-        this.router.navigateByUrl('/tabs/episodes/${episodeId}');
+
+    openDetails(episode: ({episode_id: any})) {
+        
+        this.router.navigateByUrl('/tabs/episodes/${id}');
     }
 }

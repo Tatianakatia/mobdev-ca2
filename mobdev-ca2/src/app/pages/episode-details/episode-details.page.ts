@@ -1,9 +1,8 @@
+import { FavouriteService } from './../../services/favourite.service';
+import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+
 
 @Component({
     selector: 'app-episode-details',
@@ -13,13 +12,34 @@ import { HttpClient } from '@angular/common/http';
 export class EpisodeDetailsPage implements OnInit {
 
     episode: any;
+    isFavourite = false;
+    episodeId = null;
 
-    constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService) { }
+    constructor(private activatedRoute: ActivatedRoute,
+        private api: ApiService,
+        private favouriteService: FavouriteService) { }
 
     ngOnInit() {
-        let id = this.activatedRoute.snapshot.paramMap.get('id');
-        this.api.getEpisode(id).subscribe(res => {
+        this.episodeId = this.activatedRoute.snapshot.paramMap.get('id');
+
+        this.api.getEpisode(this.episodeId).subscribe(res => {
             this.episode = res;
+        });
+
+        this.favouriteService.isFavourite(this.episodeId).then(isFav => {
+            this.isFavourite = isFav;
+        });
+    }
+
+    favouriteEpisode() {
+        this.favouriteService.favouriteEpisode(this.episodeId).then(() => {
+            this.isFavourite = true;
+        });
+    }
+
+    unfavouriteEpisode() {
+        this.favouriteService.unfavouriteEpisode(this.episodeId).then(() => {
+            this.isFavourite = false;
         });
     }
 
