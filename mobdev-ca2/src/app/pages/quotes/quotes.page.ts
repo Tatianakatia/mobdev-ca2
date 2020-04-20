@@ -21,5 +21,10 @@ export class QuotesPage implements OnInit {
             console.log('my data: ', data);
         })
   }
+
+    openDetails(quote) {
+        
+        this.router.navigateByUrl('/tabs/quotes/${id}');
+    }
 }
 

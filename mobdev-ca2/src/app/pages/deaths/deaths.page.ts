@@ -21,7 +21,7 @@ export class DeathsPage implements OnInit {
         })
   }
 
-    openDetails(death: ({death_id: any})) {
+    openDetails(death) {
         
         this.router.navigateByUrl('/tabs/deaths/${id}');
     }

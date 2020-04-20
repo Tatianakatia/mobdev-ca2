@@ -24,7 +24,7 @@ export class CharactersPage implements OnInit {
         })
     }
 
-    openDetails(character:( { char_id: any; name: any})) {
-        this.router.navigateByUrl('/tabs/charcters/${id}');
+    openDetails(character) {
+        this.router.navigateByUrl('/tabs/characters/${id}');
     }
 }
