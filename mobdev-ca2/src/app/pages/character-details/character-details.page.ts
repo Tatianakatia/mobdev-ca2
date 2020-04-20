@@ -23,9 +23,13 @@ export class CharacterDetailsPage implements OnInit {
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id');
         this.api.getCharacter(this.characterId).subscribe(res => {
         this.character = res[0];
-            console.log(JSON.stringify(this.characterId.char_id));
+            console.log(JSON.stringify(this.character));
         })
   }
+
+  //openWebsite() {
+  //    window.open(this.character.Website, "_blank");
+ // }
 
 }
 

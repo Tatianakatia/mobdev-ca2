@@ -1,14 +1,28 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Quotes</ion-title>
+    <ion-title>My Quote Search</ion-title>
     <ion-back-button></ion-back-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar>
+
+    <ion-item>
+        <ion-label>Select Searchtype</ion-label>
+        <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+            <ion-select-option value="">All</ion-select-option>
+            <ion-select-option value="quote">Quote</ion-select-option>
+
+        </ion-select>
+    
+    </ion-item>
+
     <ion-list>
-        <ion-item button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
+        <ion-item button *ngFor="let quote of quotes | async" [routerLink]="['/', 'quotes', quote.quote_id]">
         {{  quote.author }}
-       
         </ion-item>
     </ion-list>
+
+
 </ion-content>
