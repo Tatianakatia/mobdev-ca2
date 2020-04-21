@@ -19,12 +19,12 @@ export class CharactersPage implements OnInit {
     ngOnInit() {
         this.characters = this.api.getCharacters();
         this.characters.subscribe(data => {
-            console.log('my datacharacterDetails: ', data);
+            console.log('my datacharacters: ', data);
         })
     }
 
     openDetails(character) {
-        this.router.navigateByUrl('/tabs/characters/${id}');
+        this.router.navigateByUrl(`/tabs/characters/${character.char_id}`);
          console.log('my dataCharacterDetails: ', character);
     }
 }
