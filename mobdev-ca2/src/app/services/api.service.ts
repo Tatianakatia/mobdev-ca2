@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from  'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 
-export enum SearchType{
-    all='',
+export enum SearchType {
+    all = '',
     quote_id = 'id',
     quote = 'quote',
     author = 'author',
     series = 'series',
-   
-    
-    
-   
+
+
+
+
 }
 
 
@@ -23,37 +23,47 @@ export enum SearchType{
 })
 export class ApiService {
 
-    url = 'https://breakingbadapi.com/api';
+    url = 'https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/quotes.json';
 
     constructor(private http: HttpClient) { }
 
-    searchData(quote: string, author: SearchType): Observable<any>{
+    searchData(quote: string, author: SearchType): Observable<any> {
         return this.http.get(`${this.url}&quote=${encodeURI(quote)}?&author=${author}`)
-       
-        .pipe(
-            map(results => {
-                console.log('RAW: ', results)
-                results['Search']
-            })
-        );
-        }
+
+            .pipe(
+                map(results => {
+                    console.log('RAW: ', results)
+                    results['SearchQuotes']
+                })
+            );
+    }
 
     getDetails(id) {
         return this.http.get(`${this.url}?i=${id}&episode=full`);
     }
 
-    
+
 
     getEpisodes() {
-        return this.http.get('https://breakingbadapi.com/api/episodes');
+        return this.http.get('https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/episodes.json');
 
     }
 
     getEpisode(id) {
-        return this.http.get(`https://breakingbadapi.com/api/episodes/${id}`)
-        ;
+        return this.http.get(`https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/episodes.json/${id}`)
+            ;
     }
 
+    getCharacters() {
+        return this.http.get('https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/characters.json');
+
+    }
+    getCharacter(id) {
+        return this.http.get(`https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/characters.json/${id}`);
+    }
+
+
+    /*
     getCharacters() {
         return this.http.get('https://breakingbadapi.com/api/characters');
 
@@ -61,23 +71,18 @@ export class ApiService {
     getCharacter(id) {
         return this.http.get(`https://breakingbadapi.com/api/characters/${id}`);
     }
-
+*/
     getQuotes() {
-        return this.http.get('https://breakingbadapi.com/api/quotes');
+        return this.http.get('https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/quotes.json');
 
     }
     getQuote(id) {
-        return this.http.get(`https://breakingbadapi.com/api/quotes/${id}`)
-                .pipe(
-            map(quoteresult => {
-                console.log('RAW: ', quoteresult)
-                quoteresult['Search']
-            })
-                );
+        return this.http.get(`https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/quotes.json/${id}`)
+      
     }
 
     getDeaths() {
-        return this.http.get('https://breakingbadapi.com/api/deaths');
+        return this.http.get('https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/deaths.json');
 
     }
 

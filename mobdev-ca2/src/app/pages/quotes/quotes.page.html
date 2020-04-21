@@ -5,24 +5,32 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
-    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar>
-
-    <ion-item>
-        <ion-label>Select Searchtype</ion-label>
-        <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
-            <ion-select-option value="">All</ion-select-option>
-            <ion-select-option value="quote">Quote</ion-select-option>
-
-        </ion-select>
-    
-    </ion-item>
-
-    <ion-list>
-        <ion-item button *ngFor="let quote of quotes | async" [routerLink]="['/', 'quotes', quote.quote_id]">
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)">
+    </ion-searchbar>
+   <!-- <ion-searchbar  ></ion-searchbar> 
+      <ion-list>
+        <ion-item  button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
         {{  quote.author }}
         </ion-item>
     </ion-list>
+    -->
+
+
+    <ion-card *ngIf="quote" class="movie-card">
+    <ion-card-header>Episode {{ quote.quote_id }}: {{ quote.quote }}</ion-card-header>
+    <ion-card-content>
+      {{ quote.opening_crawl }}
+    </ion-card-content>
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="episode" slot="start"></ion-icon>
+      Director: {{ quote.quote }}
+    </ion-item>
+    <ion-item class="movie-info" lines="none">
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      Release Date: {{ quote.author }}
+    </ion-item>
+  </ion-card>
+
 
 
 </ion-content>

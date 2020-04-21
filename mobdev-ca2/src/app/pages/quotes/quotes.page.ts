@@ -17,34 +17,34 @@ export class QuotesPage implements OnInit {
 
     quotes: Observable<any>;
   
-    constructor(private navController: NavController, private router: Router, private api: ApiService) { }
+    constructor(private navController: NavController, 
+            private router: Router, 
+            private api: ApiService) { }
   
     ngOnInit() {
-    /*  this.quotes = this.api.getQuotes();
+      this.quotes = this.api.getQuotes();
             this.quotes.subscribe(data => {
             console.log('my dataquote: ', data);
         })
-   */
+   
     }
 
     searchChanged(){
         this.quotes = this.api.searchData(this.searchTerm, this.author);
         console.log('My resultssearchquote: ', this.quotes);
 
-        //this.results.subscribe(res => {
-         // in here
-        //})
+        this.results.subscribe(res => {
+            console.log( 'My Data: ', this.quotes )
+         
+        })
     }
 
     openDetails(quote) {
         
-        this.router.navigateByUrl('/tabs/quotes/${id}');
+        this.router.navigateByUrl(`/tabs/quotes/${quote.id}`);
         console.log('my dataquotedetails: ', quote);
     }
 
-        openDetail(character) {
-        this.router.navigateByUrl('/tabs/characters/${id}');
-         console.log('my dataCharacterDetails: ', character);
-    }
+   
 }
 

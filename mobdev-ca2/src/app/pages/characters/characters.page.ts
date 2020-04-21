@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
@@ -13,14 +12,14 @@ export class CharactersPage implements OnInit {
 
     characters: Observable<any>;
 
-    constructor(/*private navController: NavController,*/
+    constructor(
         private router: Router,
         private api: ApiService) { }
 
     ngOnInit() {
         this.characters = this.api.getCharacters();
         this.characters.subscribe(data => {
-            console.log('my data: ', data);
+            console.log('my datacharacterDetails: ', data);
         })
     }
 
