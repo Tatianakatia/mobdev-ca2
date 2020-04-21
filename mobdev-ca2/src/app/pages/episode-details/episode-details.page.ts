@@ -19,6 +19,7 @@ export class EpisodeDetailsPage implements OnInit {
         private api: ApiService,
        /* private favouriteService: FavouriteService*/) { }
 
+       
     ngOnInit() {
      this.episodeId = this.activatedRoute.snapshot.paramMap.get('id');
     this.api.getEpisode(this.episodeId).subscribe(res => {
