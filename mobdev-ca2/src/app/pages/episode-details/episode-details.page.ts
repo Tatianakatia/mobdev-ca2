@@ -17,23 +17,23 @@ export class EpisodeDetailsPage implements OnInit {
 
     constructor(private activatedRoute: ActivatedRoute,
         private api: ApiService,
-       /* private favouriteService: FavouriteService*/) { }
-       
-    ngOnInit() {
-     this.episodeId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.api.getEpisode(this.episodeId).subscribe(res => {
-      this.episode = res[0];
-    })
-    }
+        private favouriteService: FavouriteService) { }
 
-/*
+    ngOnInit() {
+        this.episodeId = this.activatedRoute.snapshot.paramMap.get('id');
+        this.api.getEpisode(this.episodeId).subscribe(res => {
+            this.episode = res[0];
+        })
+
+
+
         this.favouriteService.isFavourite(this.episodeId).then(isFav => {
             this.isFavourite = isFav;
         })
     }
-    */  
-    
-/*
+
+
+
     favouriteEpisode() {
         this.favouriteService.favouriteEpisode(this.episodeId).then(() => {
             this.isFavourite = true;
@@ -45,5 +45,5 @@ export class EpisodeDetailsPage implements OnInit {
             this.isFavourite = false;
         })
     }
-*/
+
 }
