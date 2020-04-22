@@ -24,6 +24,7 @@ export class CharactersPage implements OnInit {
     }
 
     openDetails(character) {
+        let characterId = character.char_id
         this.router.navigateByUrl(`/tabs/characters/${character.char_id}`);
          console.log('my dataCharacterDetails: ', character);
     }

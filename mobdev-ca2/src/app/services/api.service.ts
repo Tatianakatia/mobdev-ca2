@@ -38,11 +38,7 @@ export class ApiService {
             );
     }
 
-    /*
-    getDetails(id) {
-        return this.http.get(`${this.url}?i=${id}&episode=full`);
-    }
-*/
+
 
 /*
 
@@ -68,7 +64,7 @@ export class ApiService {
 
 
  
-
+/*
     getCharacters() {
         return this.http.get('https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/characters.json');
 
@@ -76,9 +72,9 @@ export class ApiService {
     getCharacter(id) {
         return this.http.get(`https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/characters.json/${id}`);
     }
+*/
 
-
-    /*
+  
     getCharacters() {
         return this.http.get('https://breakingbadapi.com/api/characters');
 
@@ -86,7 +82,8 @@ export class ApiService {
     getCharacter(id) {
         return this.http.get(`https://breakingbadapi.com/api/characters/${id}`);
     }
-*/
+
+/*
     getQuotes() {
         return this.http.get('https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/quotes.json');
 
@@ -95,9 +92,25 @@ export class ApiService {
         return this.http.get(`https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/quotes.json/${id}`)
       
     }
+*/
 
+    getQuotes() {
+        return this.http.get('https://breakingbadapi.com/api/quotes');
+
+    }
+    getQuote(id) {
+        return this.http.get(`https://breakingbadapi.com/api/quotes/${id}`);
+    }
+
+/*
     getDeaths() {
         return this.http.get('https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/deaths.json');
+
+    }
+*/
+
+    getDeaths() {
+        return this.http.get('https://breakingbadapi.com/api/deaths');
 
     }
 

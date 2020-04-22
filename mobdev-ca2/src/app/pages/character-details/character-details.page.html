@@ -1,40 +1,59 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-    <ion-back-button defaulthref="/tabs/episodes"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{character?.name}}</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start" defaulthref="/tabs/episodes">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title size="small">Character Details </ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-    <ion-card button detail lines="inset" *ngFor="let character of characters | async" (click)="openDetails(character)">
-    <ion-card-header>
-        <ion-card-title>{{character.name}}</ion-card-title>
-        <ion-card-subtitle>{{character.status}}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content text-center>
-    
-    <img [src]="character.img" class="info-img">
-    {{character?.img}}    
+	<ion-card *ngIf="character" class="movie-card" text-center>
 
-    <ion-item lines="none">
-        <ion-icon name="star-half" slot="star"></ion-icon>
-        <ion-label>{{character.birthday}}</ion-label>
-    </ion-item>
 
-       <ion-item lines="none">
-        <ion-icon name="clipboard" slot="star"></ion-icon>
-        <ion-label text-wrap>{{character.nickname}}</ion-label>
-    </ion-item>
 
-       <ion-item lines="none">
-        <ion-icon name="contacts" slot="star"></ion-icon>
-        <ion-label text-wrap>{{character.portrayed}}</ion-label>
-    </ion-item>
-    
-    
+		<p align="center"><img [src]="character.img" width="180" height="180" class="info-img"></p>
 
-    </ion-card-content>
-    </ion-card>
+
+			<ion-card-header color="secondary">
+				<ion-card-title> {{character.nickname}}</ion-card-title>
+				<ion-card-subtitle>Status: {{character.status}} </ion-card-subtitle>
+			</ion-card-header>
+			<ion-card-content text-center>
+
+				<p align="left">Character Information</p>
+
+                
+
+				<ion-item  class="movie-info" lines="none">
+					<ion-icon name="people-outline" slot="start"></ion-icon>
+					<ion-label>{{character.name}}</ion-label>
+				</ion-item>
+
+				<ion-item class="movie-info"  lines="none">
+					<ion-icon name="male-female-outline" slot="start"></ion-icon>
+					<ion-label>{{character.birthday}}</ion-label>
+				</ion-item>
+
+              <!--    <p align="left"> Portrayed Information</p>-->
+				<ion-item class="movie-info"  lines="none">
+					<ion-icon name="walk-outline" slot="start"></ion-icon>
+					<ion-label text-wrap>{{character.portrayed}}</ion-label>
+				</ion-item>
+
+                
+              <!--  <p align="left">Appearance TV Season Information</p>-->
+				<ion-item class="movie-info"  lines="none">
+					<ion-icon name="film-outline" slot="start"></ion-icon>
+					<ion-label text-wrap>{{character.appearance}}</ion-label>
+				</ion-item>
+
+                <!--<p align="left">Occupation Information</p> -->
+                				<ion-item class="movie-info"  lines="none">
+					<ion-icon name="briefcase-outline" slot="start"></ion-icon>
+					<ion-label>{{character.occupation}}</ion-label>
+				</ion-item>
+
+			</ion-card-content>
+	</ion-card>
 </ion-content>

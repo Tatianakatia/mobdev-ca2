@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { /*Router,*/ ActivatedRoute } from '@angular/router';
-//import { NavController } from '@ionic/angular';
+import {  ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
@@ -15,15 +14,13 @@ export class CharacterDetailsPage implements OnInit {
     characterId = null;
 
      constructor(private activatedRoute: ActivatedRoute,
-              /*  private navController: NavController, */
-              /*  private router: Router, */
-                private api: ApiService) { }
+                   private api: ApiService) { }
 
   ngOnInit() {
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id');
         this.api.getCharacter(this.characterId).subscribe(res => {
         this.character = res[0];
-            console.log(JSON.stringify(this.character));
+           // console.log(JSON.stringify(this.character));
         })
   }
 
