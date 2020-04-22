@@ -1,31 +1,30 @@
 <ion-header>
-	<ion-toolbar color="primary">
-		<ion-buttons slot="start" defaultHref="/tabs/episodes">
+	<ion-toolbar class="movie-info">
+		<ion-buttons slot="start" defaultHref="/tabs/(episodes: episodes">
 			<ion-back-button></ion-back-button>
 		</ion-buttons>
-		<ion-title size="small">Episode Details</ion-title>
+		<ion-title>Episode: {{episode?.episode}}</ion-title>
 		<ion-buttons slot="end">
-			<ion-button (click)="unfavoriteepisode()" *ngIf="isFavorite">
-				<ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
+       
+			<ion-button (click)="unfavouriteEpisode()" *ngIf="isFavourite">
+				<ion-icon name="star" slot="icon-only" color="primary"></ion-icon>
 			</ion-button>
-			<ion-button (click)="favoriteepisode()" *ngIf="!isFavorite">
-				<ion-icon name="star-outline" slot="icon-only" color="secondary"></ion-icon>
+			<ion-button (click)="favouriteEpisode()" *ngIf="!isFavourite">
+				<ion-icon name="star-outline" slot="icon-only" color="light"></ion-icon>
 			</ion-button>
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
 <ion-content padding>
-	<ion-card *ngIf="episode" class="movie-card" text-center>
-		<ion-card-header color="secondary"> 
-            {{ episode.series }} 
+	<ion-card *ngIf="episode" class="movie-card" >
+		<ion-card-header class="movie-title" style="zoom:1.5" > 
+            {{ episode.title }} 
         </ion-card-header>
-         Episode {{ episode.episode }} 
-
-		<ion-card-content>
+        <ion-card-content>
 
 		<ion-item class="movie-info" lines="none">
 			<ion-icon name="film-outline" slot="start"></ion-icon>
-			{{ episode.title }}
+			{{ episode.series }}
 		</ion-item>			
 		
 		<ion-item class="movie-info" lines="none">

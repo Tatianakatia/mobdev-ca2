@@ -1,0 +1,17 @@
+.movie-card {
+    background: rgb(236, 247, 236);
+    border: 1px solid var(--ion-color-light);
+}
+.movie-info {
+    --background: rgb(236, 247, 236);
+}
+
+.movie-title {
+    --background: rgb(170, 248, 170);
+    
+}
+
+  ion-item {
+    --border-color: var(--ion-color-light);
+    --detail-push-color: var(--ion-color-light);
+  }
