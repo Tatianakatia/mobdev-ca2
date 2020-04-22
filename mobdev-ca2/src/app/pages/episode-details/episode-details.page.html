@@ -19,10 +19,14 @@
 		<ion-card-header color="secondary"> 
             {{ episode.series }} 
         </ion-card-header>
-         Episode {{ episode.episode }}: {{ episode.title }}
-         
+         Episode {{ episode.episode }} 
+
 		<ion-card-content>
-			
+
+		<ion-item class="movie-info" lines="none">
+			<ion-icon name="film-outline" slot="start"></ion-icon>
+			{{ episode.title }}
+		</ion-item>			
 		
 		<ion-item class="movie-info" lines="none">
 			<ion-icon name="calendar" slot="start"></ion-icon>
