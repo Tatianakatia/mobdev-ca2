@@ -1,9 +1,9 @@
 <ion-header>
-	<ion-toolbar color="primary">
-		<ion-buttons slot="start" defaulthref="/tabs/episodes">
-			<ion-back-button></ion-back-button>
+	<ion-toolbar class="characters-menu">
+		<ion-buttons slot="start" defaulthref="/tabs/(characters)">
+			<ion-back-button ></ion-back-button>
 		</ion-buttons>
-		<ion-title size="small">Character Details </ion-title>
+		<ion-title > {{ character.name }} </ion-title>
 	</ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
 		<p align="center"><img [src]="character.img" width="180" height="180" class="info-img"></p>
 
 
-			<ion-card-header color="secondary">
+			<ion-card-header class="characters-card">
 				<ion-card-title> {{character.nickname}}</ion-card-title>
 				<ion-card-subtitle>Status: {{character.status}} </ion-card-subtitle>
 			</ion-card-header>
@@ -24,12 +24,12 @@
 				<p align="left">Character Information</p>
 
                 
-
+<!--
 				<ion-item  class="movie-info" lines="none">
 					<ion-icon name="people-outline" slot="start"></ion-icon>
 					<ion-label>{{character.name}}</ion-label>
 				</ion-item>
-
+-->
 				<ion-item class="movie-info"  lines="none">
 					<ion-icon name="male-female-outline" slot="start"></ion-icon>
 					<ion-label>{{character.birthday}}</ion-label>

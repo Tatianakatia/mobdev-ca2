@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-character-details',
@@ -14,7 +15,8 @@ export class CharacterDetailsPage implements OnInit {
     characterId = null;
 
      constructor(private activatedRoute: ActivatedRoute,
-                   private api: ApiService) { }
+                   private api: ApiService,
+                   private navCtrl: NavController) { }
 
   ngOnInit() {
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -24,6 +26,9 @@ export class CharacterDetailsPage implements OnInit {
         })
   }
 
+    goBack() {
+    this.navCtrl.back();
+  }
   //openWebsite() {
   //    window.open(this.character.Website, "_blank");
  // }

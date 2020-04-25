@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-toolbar class="movie-info">
+	<ion-toolbar class="episode-menu">
 		<ion-buttons slot="start" defaultHref="/tabs/(episodes: episodes)">
 			<ion-back-button></ion-back-button>
 		</ion-buttons>
@@ -10,14 +10,14 @@
 				<ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
 			</ion-button>
 			<ion-button (click)="favouriteEpisode()" *ngIf="!isFavourite">
-				<ion-icon name="star-outline" slot="icon-only" color="dark"></ion-icon>
+				<ion-icon name="star-outline" slot="icon-only" class="favorite"></ion-icon>
 			</ion-button>
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
 <ion-content padding>
 	<ion-card *ngIf="episode" class="movie-card" >
-		<ion-card-header class="movie-title" style="zoom:1.5" > 
+		<ion-card-header class="episode-card" style="zoom:1.5" > 
            <ion-text color="dark"> {{ episode.title }}</ion-text> 
         </ion-card-header>
         <ion-card-content>
@@ -34,14 +34,13 @@
 		<ion-item class="movie-info" lines="none">
 			<ion-icon name="people-outline" slot="start"></ion-icon>
 
-            <div ng-repeat="episode.characters in somedata.split(',')">{{ episode.characters }}</div>
-			
+            <div ng-repeat="episode in episodes .split(',')">{{ episode.characters }}</div>
+
 		</ion-item>
         </ion-card-content>
 	</ion-card>
 
-    
-  <!--<button ion-button full color="secondary" (click)="shareFilm()">Share by Email</button>-->
+  
 </ion-content>
 
 

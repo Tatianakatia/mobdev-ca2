@@ -1,18 +1,35 @@
-.movie-card {
-    background: rgb(7, 196, 7);
-    border: 1px solid var(--ion-color-light);
-}
-.movie-info {
-    --background: rgb(rgb(5, 180, 5));
+.episode-menu {
+    --background: rgb(5, 180, 5);
+    color: white;
+    font-size: 40px;
+    text-align: center;
     
 }
 
-/*
-.movie-title {
-    --background: rgb(170, 248, 170);
+.favorite{
+    color: white;
     
 }
-*/
+.episode-title {
+    background: rgb(215, 247, 215);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+
+        
+    
+}
+.episode-info {
+    --background: white <!-- rgb(227, 247, 227)-->;
+    
+}
+
+
+.episode-card {
+    --background: rgb(215, 247, 215);
+    
+}
+
 
   ion-item {
     --border-color: var(--ion-color-light);
