@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
@@ -13,25 +12,22 @@ export class EpisodesPage implements OnInit {
 
     episodes: Observable<any>;
 
-    constructor( private router: Router, private api: ApiService) { }
+    constructor(
+        private router: Router,
+        private api: ApiService) { }
 
     ngOnInit() {
         this.episodes = this.api.getEpisodes();
         this.episodes.subscribe(data => {
             console.log('my dataEpisodes: ', data);
         })
-    
-    
-    }
 
+    }
 
     openDetails(episode) {
-      let episodeId = episode.episode_id;  
-    this.router.navigateByUrl(`/tabs/episodes/${episodeId}`);
-    console.log('my dataEpisodeDetails: ', episodeId);
+        let episodeId = episode.episode_id;
+        this.router.navigateByUrl(`/tabs/episodes/${episodeId}`);
+        console.log('my dataEpisodeDetails: ', episodeId);
+        //let countline = episodeId.length;
     }
-
-
-
-
 }

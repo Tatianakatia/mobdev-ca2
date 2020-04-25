@@ -9,6 +9,7 @@
         <ion-item button detail lines="inset" *ngFor="let death of deaths | async" (click)="openDetails(death)">
         {{  death.death }}
            <div class="btn" *ngFor="let death of (results | async)">
+             <ion-searchbar (ionInput)="getDeaths($event)"></ion-searchbar>
             <ion-button [routerLink]="['/', 'details', death.death]" color="primary" fill="solid">
                 search
             </ion-button>
