@@ -1,36 +1,20 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>My Quote Search</ion-title>
-    <ion-back-button></ion-back-button>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-title>My Quote Search</ion-title>
+		<ion-back-button></ion-back-button>
+	</ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)">
-    </ion-searchbar>
-   <!-- <ion-searchbar  ></ion-searchbar> 
-      <ion-list>
-        <ion-item  button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
-        {{  quote.author }}
-        </ion-item>
-    </ion-list>
-    -->
+	
+   <ion-searchbar placeholder="Search"
+                [(ngModel)]="queryText"
+                (ionInput)="updatequote()">
+  </ion-searchbar>
+    
 
-
-    <ion-card *ngIf="quote" class="movie-card">
-    <ion-card-header>Episode {{ quote.quote_id }}: {{ quote.quote }}</ion-card-header>
-    <ion-card-content>
-      {{ quote.opening_crawl }}
-    </ion-card-content>
-    <ion-item class="movie-info" lines="none">
-      <ion-icon name="episode" slot="start"></ion-icon>
-      Director: {{ quote.quote }}
-    </ion-item>
-    <ion-item class="movie-info" lines="none">
-      <ion-icon name="calendar" slot="start"></ion-icon>
-      Release Date: {{ quote.author }}
-    </ion-item>
-  </ion-card>
-
-
-
+	<ion-list >
+		<ion-item  button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
+			{{  quote.quote }}
+		</ion-item>
+	</ion-list>
 </ion-content>

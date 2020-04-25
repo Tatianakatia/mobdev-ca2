@@ -4,40 +4,17 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
-export enum SearchType {
-    all = '',
-    quote_id = 'id',
-    quote = 'quote',
-    author = 'author',
-    series = 'series',
-
-
-
-
-}
-
-
-
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
 
-    url = 'https://8100-e197f891-bff0-4c6d-a3c7-d99e04e593e8.ws-eu01.gitpod.io/assets/quotes.json';
+        constructor(private http: HttpClient) { }
 
-    constructor(private http: HttpClient) { }
-
-    searchData(quote: string, author: SearchType): Observable<any> {
-        return this.http.get(`${this.url}&quote=${encodeURI(quote)}?&author=${author}`)
-
-            .pipe(
-                map(results => {
-                    console.log('RAW: ', results)
-                    results['SearchQuotes']
-                })
-            );
-    }
-
+      getAuthor(author) {
+    return this.http.get(`https://breakingbadapi.com/api/quote?author=${author}`);
+    
+  }
 
 
 /*
