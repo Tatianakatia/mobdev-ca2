@@ -3,6 +3,7 @@ import {  ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 import { NavController } from '@ionic/angular';
+import { FavouriteService } from './../../services/favourite.service';
 
 @Component({
   selector: 'app-character-details',
@@ -11,12 +12,14 @@ import { NavController } from '@ionic/angular';
 })
 export class CharacterDetailsPage implements OnInit {
 
-    character: Observable<any>;
+    character: any;
+    isFavouriteCharacters = false;
     characterId = null;
 
      constructor(private activatedRoute: ActivatedRoute,
                    private api: ApiService,
-                   private navCtrl: NavController) { }
+                   private navCtrl: NavController,
+                   private favouriteService: FavouriteService ) { }
 
   ngOnInit() {
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -24,14 +27,23 @@ export class CharacterDetailsPage implements OnInit {
         this.character = res[0];
            // console.log(JSON.stringify(this.character));
         })
+
+        this.favouriteService.isFavouriteCharacter(this.characterId).then(isFav => {
+            this.isFavouriteCharacters = isFav;
+        })
   }
 
-    goBack() {
-    this.navCtrl.back();
-  }
-  //openWebsite() {
-  //    window.open(this.character.Website, "_blank");
- // }
+ favouriteCharacter() {
+        this.favouriteService.favouriteCharacter(this.characterId).then(() => {
+            this.isFavouriteCharacters = true;
+        })
+    }
+
+    unfavouriteCharacter() {
+        this.favouriteService.unfavouriteCharacter(this.characterId).then(() => {
+            this.isFavouriteCharacters = false;
+        })
+    }
 
 }
 

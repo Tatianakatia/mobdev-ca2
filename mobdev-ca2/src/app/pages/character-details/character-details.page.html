@@ -1,16 +1,27 @@
 <ion-header>
 	<ion-toolbar class="characters-menu">
-		<ion-buttons slot="start" defaulthref="/tabs/(characters)">
+		<ion-buttons slot="start" defaulthref="/tabs/characters">
 			<ion-back-button ></ion-back-button>
 		</ion-buttons>
-		<ion-title > {{ character.name }} </ion-title>
+		<ion-title > Character </ion-title>
 	</ion-toolbar>
+
+
 </ion-header>
 
 <ion-content class="ion-padding">
 	<ion-card *ngIf="character" class="movie-card" text-center>
 
-
+    <div>
+		<ion-buttons slot="end">
+ 			<ion-button (click)="unfavouriteCharacter()" *ngIf="isFavouriteCharacters">
+				<ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
+			</ion-button>
+			<ion-button (click)="favouriteCharacter()" *ngIf="!isFavouriteCharacters">
+				<ion-icon name="star-outline" slot="icon-only" class="favorite"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+    </div>
 
 		<p align="center"><img [src]="character.img" width="180" height="180" class="info-img"></p>
 

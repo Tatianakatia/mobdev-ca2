@@ -8,7 +8,7 @@
 	<ion-searchbar placeholder="Search by Author" name="search" [(ngModel)]="searchTerm"   cancelButtonText="Cancel"></ion-searchbar>
 	<ion-list>
 		<div  *ngFor="let quote of quotes | async" >
-			<ion-item button detail lines="inset" *ngIf="searchQuote(quote)" (click)="openDetails(quote)">
+			<ion-item *ngIf="searchQuote(quote)" button detail lines="inset"  (click)="openDetails(quote)">
 				<p>{{ quote.quote }}</p>
 			</ion-item>
 		</div>
