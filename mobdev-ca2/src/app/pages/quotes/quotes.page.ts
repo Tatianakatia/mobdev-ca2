@@ -23,9 +23,15 @@ export class QuotesPage implements OnInit {
       });
   }
 
+    openDetails(quote) {
+        let quoteId = quote.quote_id
+        this.router.navigateByUrl(`/tabs/quotes/${quoteId}`);
+        console.log('my dataQuoteDetails: ', quoteId);
+    }
+
     searchQuote(quote) {
   
-          return quote.author.toLowerCase(quote).indexOf(this.searchTerm.toLowerCase()) != -1;
+          return quote.author.toLowerCase().indexOf(this.searchTerm.toLowerCase()) != -1;
       }
 
  }
