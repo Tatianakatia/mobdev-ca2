@@ -10,7 +10,8 @@ import { IonInfiniteScroll } from '@ionic/angular';
     styleUrls: ['./episodes.page.scss'],
 })
 export class EpisodesPage implements OnInit {
- @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll
+    @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll
+
     episodes: Observable<any>;
 
     constructor(
@@ -22,7 +23,6 @@ export class EpisodesPage implements OnInit {
         this.episodes.subscribe(data => {
             console.log('my dataEpisodes: ', data);
         })
-
     }
 
     openDetails(episode) {
@@ -33,16 +33,14 @@ export class EpisodesPage implements OnInit {
     }
 
 
-  loadData(event) {
-    setTimeout(() => {
-      console.log('Done');
-      event.target.complete();
+    loadData(event) {
+        setTimeout(() => {
+            console.log('Done');
+            event.target.complete();
 
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
-      if (this.api.getQuote.length == 1000) {
-        event.target.disabled = true;
-      }
-    }, 500);
-  }
+            if (this.api.getQuote.length == 1000) {
+                event.target.disabled = true;
+            }
+        }, 500);
+    }
 }

@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { IonicStorageModule } from '@ionic/storage';
-import { InfiniteScrollModule} from 'ngx-infinite-scroll'
+import { InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 
 @NgModule({

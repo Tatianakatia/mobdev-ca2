@@ -5,7 +5,7 @@
 		</ion-buttons>
 		<ion-title>Episode: {{episode?.episode}}</ion-title>
 		<ion-buttons slot="end">
-       
+
 			<ion-button (click)="unfavouriteEpisode()" *ngIf="isFavourite">
 				<ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
 			</ion-button>
@@ -16,31 +16,33 @@
 	</ion-toolbar>
 </ion-header>
 <ion-content padding>
-	<ion-card *ngIf="episode" class="movie-card" >
-		<ion-card-header class="episode-card" style="zoom:1.5" > 
-           <ion-text color="dark"> {{ episode.title }}</ion-text> 
-        </ion-card-header>
-        <ion-card-content>
+	<ion-card *ngIf="episode" class="movie-card">
+		<ion-card-header class="episode-card" style="zoom:1.5">
+			<ion-text color="dark"> {{ episode.title }}</ion-text>
+		</ion-card-header>
+		<ion-card-content>
 
-		<ion-item class="movie-info" lines="none">
-			<ion-icon name="film-outline" slot="start"></ion-icon>
-			{{ episode.series }}
-		</ion-item>			
-		
-		<ion-item class="movie-info" lines="none">
-			<ion-icon name="calendar" slot="start"></ion-icon>
-			{{ episode.air_date }}
-		</ion-item>
-		<ion-item class="movie-info" lines="none">
-			<ion-icon name="people-outline" slot="start"></ion-icon>
+			<ion-item class="movie-info" lines="none">
+				<ion-icon name="film-outline" slot="start"></ion-icon>
+				<h4>{{ episode.series }}</h4>
+			</ion-item>
+			<ion-item class="movie-info" lines="none">
+				<ion-icon name="cellular-outline" slot="start"></ion-icon>
+				<h4>{{ episode.season }}</h4>
+			</ion-item>
 
-            <div ng-repeat="episode in episodes .split(',')">{{ episode.characters }}</div>
+			<ion-item class="movie-info" lines="none">
+				<ion-icon name="calendar" slot="start"></ion-icon>
+				{{ episode.air_date }}
+			</ion-item>
+			<ion-item class="movie-info" lines="none">
+				<ion-icon name="people-outline" slot="start"></ion-icon>
 
-		</ion-item>
-        </ion-card-content>
+				<div ng-repeat="episode in episodes .split(',')">{{ episode.characters }}</div>
+
+			</ion-item>
+		</ion-card-content>
 	</ion-card>
 
-  
+
 </ion-content>
-
-

@@ -12,8 +12,6 @@ export class DeathsPage implements OnInit {
 
     deaths: Observable<any>;
     searchTerm: any = "";
-    results: any;
-    countDeath: Observable<Object>;
 
 
     constructor(private router: Router, private api: ApiService) { }
@@ -23,34 +21,15 @@ export class DeathsPage implements OnInit {
         this.deaths.subscribe(data => {
             console.log('my datadeaths: ', data);
         })
-
     }
 
     openDetails(death) {
     let deathId = death.death_id;
         this.router.navigateByUrl(`/tabs/deaths/${death.death_id}`);
         console.log('my dataDeathdetails: ', deathId);
-
-    
-
     }
 
-    
-
-  
-    
-
     searchDeath(death) {
-  
           return death.responsible.toLowerCase().indexOf(this.searchTerm.toLowerCase()) != -1;
       }
-
-
-/*
-    searchDeath(death) {
-        
-         this.results = this.searchTerm;
-         
-      }
-*/
 }

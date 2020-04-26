@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
     selector: 'app-characters',
@@ -9,6 +10,7 @@ import { ApiService } from '../../services/api.service';
     styleUrls: ['./characters.page.scss'],
 })
 export class CharactersPage implements OnInit {
+    @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll
 
     characters: Observable<any>;
 
@@ -24,8 +26,19 @@ export class CharactersPage implements OnInit {
     }
 
     openDetails(character) {
-        let characterId = character.char_id
+        let characterId = character.char_id;
         this.router.navigateByUrl(`/tabs/characters/${character.char_id}`);
-         console.log('my dataCharacterDetails: ', characterId);
+        console.log('my dataCharacterDetails: ', characterId);
+    }
+
+    loadData(event) {
+        setTimeout(() => {
+            console.log('Done');
+            event.target.complete();
+
+            if (this.api.getQuote.length == 1000) {
+                event.target.disabled = true;
+            }
+        }, 500);
     }
 }
