@@ -1,20 +1,16 @@
 <ion-header>
 	<ion-toolbar class="quote-menu">
-		<ion-title>My Quote Search</ion-title>
+		<ion-title>My Quote Search by Author</ion-title>
 		<ion-back-button></ion-back-button>
 	</ion-toolbar>
 </ion-header>
 <ion-content>
-	<ion-searchbar name="search" [(ngModel)]="searchTerm" cancelButtonText="Cancel"></ion-searchbar>
+	<ion-searchbar placeholder="Search by Author" name="search" [(ngModel)]="searchTerm"   cancelButtonText="Cancel"></ion-searchbar>
 	<ion-list>
 		<div *ngFor="let quote of quotes | async">
 			<ion-item *ngIf="searchQuote(quote)">
 				<p>{{ quote.quote }}</p>
 			</ion-item>
 		</div>
-
 	</ion-list>
-
-
-
 </ion-content>
