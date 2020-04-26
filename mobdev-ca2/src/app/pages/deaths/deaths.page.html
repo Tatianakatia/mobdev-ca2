@@ -1,12 +1,12 @@
 <ion-header>
 	<ion-toolbar class="deaths-menu">
-		<ion-title>Deaths</ion-title>
+		<ion-title>My Deaths Search by Responsible</ion-title>
 		<ion-back-button></ion-back-button>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar name="search" [(ngModel)]="searchTerm"  cancelButtonText="Cancel"></ion-searchbar>
+  <ion-searchbar placeholder="Search by Responsible" name="search" [(ngModel)]="searchTerm"  cancelButtonText="Cancel"></ion-searchbar>
   <ion-list>
     <div *ngFor="let death of deaths | async">
       <ion-item *ngIf="searchDeath(death)">
