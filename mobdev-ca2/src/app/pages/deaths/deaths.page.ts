@@ -29,6 +29,13 @@ export class DeathsPage implements OnInit {
         console.log('my dataDeathdetails: ', deathId);
     }
 
+    
+    openCount(author) {
+    let countdeathId = this.api.getAuthor(author);
+        this.router.navigateByUrl(`/tabs/deaths${author.author}`);
+        console.log('my dataCountDeath: ', countdeathId);
+    }
+
     searchDeath(death) {
           return death.responsible.toLowerCase().indexOf(this.searchTerm.toLowerCase()) != -1;
       }

@@ -29,7 +29,7 @@ export class EpisodesPage implements OnInit {
         let episodeId = episode.episode_id;
         this.router.navigateByUrl(`/tabs/episodes/${episodeId}`);
         console.log('my dataEpisodeDetails: ', episodeId);
-        //let countline = episodeId.length;
+        
     }
 
 

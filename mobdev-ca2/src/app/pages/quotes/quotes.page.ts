@@ -3,25 +3,25 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
- 
 @Component({
-  selector: 'app-quotes',
-  templateUrl: './quotes.page.html',
-  styleUrls: ['./quotes.page.scss'],
+    selector: 'app-quotes',
+    templateUrl: './quotes.page.html',
+    styleUrls: ['./quotes.page.scss'],
 })
 export class QuotesPage implements OnInit {
- 
-  quotes: Observable<any>;
- 
+
+    quotes: Observable<any>;
     searchTerm: any = "";
-  constructor(private router: Router, private api: ApiService) { }
- 
-  ngOnInit() {
-    this.quotes = this.api.getQuotes();
-    this.quotes.subscribe(data => {
-      console.log('my data: ', data);
-      });
-  }
+
+    constructor(private router: Router,
+        private api: ApiService) { }
+
+    ngOnInit() {
+        this.quotes = this.api.getQuotes();
+        this.quotes.subscribe(data => {
+            console.log('my data: ', data);
+        });
+    }
 
     openDetails(quote) {
         let quoteId = quote.quote_id
@@ -30,8 +30,8 @@ export class QuotesPage implements OnInit {
     }
 
     searchQuote(quote) {
-  
-          return quote.author.toLowerCase().indexOf(this.searchTerm.toLowerCase()) != -1;
-      }
 
- }
+        return quote.author.toLowerCase().indexOf(this.searchTerm.toLowerCase()) != -1;
+    }
+
+}
