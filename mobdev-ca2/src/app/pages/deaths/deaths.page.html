@@ -1,21 +1,37 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Deaths</ion-title>
-    <ion-back-button></ion-back-button>
-  </ion-toolbar>
+	<ion-toolbar class="deaths-menu">
+		<ion-title>Deaths</ion-title>
+		<ion-back-button></ion-back-button>
+	</ion-toolbar>
 </ion-header>
+
 <ion-content>
-    <ion-list>
-        <ion-item button detail lines="inset" *ngFor="let death of deaths | async" (click)="openDetails(death)">
-        {{  death.death }}
-           <div class="btn" *ngFor="let death of (results | async)">
-             <ion-searchbar (ionInput)="getDeaths($event)"></ion-searchbar>
-            <ion-button [routerLink]="['/', 'details', death.death]" color="primary" fill="solid">
-                search
-            </ion-button>
-        </div>
+  <ion-searchbar name="search" [(ngModel)]="searchTerm"  cancelButtonText="Cancel"></ion-searchbar>
+  <ion-list>
+    <div *ngFor="let death of deaths | async">
+      <ion-item *ngIf="searchDeath(death)">
+      <p>{{ death.death }} </p>
+    </ion-item>
+    </div>
+  </ion-list> 
 
 
-        </ion-item>
-    </ion-list>
+  
 </ion-content>
+
+
+<!--
+<ion-content>
+  <ion-searchbar name="search" [(ngModel)]="searchTerm"  (ionChange)="searchDeath($event)" cancelButtonText="Cancel"></ion-searchbar>
+  <ion-list>
+    
+      <ion-item  *ngFor="let death of (deaths | async)" [routerLink]="['death-count?name=', 'deaths', death.death ]">
+      <p>{{ death.death }} </p>
+    </ion-item>
+    
+  </ion-list> 
+
+
+  
+</ion-content>
+-->

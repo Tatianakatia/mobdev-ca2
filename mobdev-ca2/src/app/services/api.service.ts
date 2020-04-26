@@ -91,4 +91,12 @@ export class ApiService {
 
     }
 
+       getDeath(id) {
+        return this.http.get(`https://breakingbadapi.com/api/deaths/${id}`);
+    }
+
+           getDeathCount() {
+        return this.http.get(`https://breakingbadapi.com/api/death-count`);
+    }
+
 }

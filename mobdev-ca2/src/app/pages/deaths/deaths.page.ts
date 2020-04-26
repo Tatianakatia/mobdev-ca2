@@ -4,32 +4,53 @@ import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  selector: 'app-deaths',
-  templateUrl: './deaths.page.html',
-  styleUrls: ['./deaths.page.scss'],
+    selector: 'app-deaths',
+    templateUrl: './deaths.page.html',
+    styleUrls: ['./deaths.page.scss'],
 })
 export class DeathsPage implements OnInit {
 
     deaths: Observable<any>;
-    searchTermName: any;
+    searchTerm: any = "";
+    results: any;
+    countDeath: Observable<Object>;
 
-  constructor(private router: Router, private api: ApiService) { }
 
-  ngOnInit() {
+    constructor(private router: Router, private api: ApiService) { }
+
+    ngOnInit() {
         this.deaths = this.api.getDeaths();
         this.deaths.subscribe(data => {
-            console.log('my data: ', data);
+            console.log('my datadeaths: ', data);
         })
-  }
+
+    }
 
     openDetails(death) {
-        
-        this.router.navigateByUrl('/tabs/deaths/${id}');
+    let deathId = death.death_id;
+        this.router.navigateByUrl(`/tabs/deaths/${death.death_id}`);
+        console.log('my dataDeathdetails: ', deathId);
+
+    
+
     }
+
+    
+
+  
+    
+
+    searchDeath(death) {
+  
+          return death.responsible.toLowerCase().indexOf(this.searchTerm.toLowerCase()) != -1;
+      }
+
+
 /*
-searchName(episode) {
-    this.death = this.api.getName(this.searchTermName);
-    console.log(this.death);
-  }
-  */
+    searchDeath(death) {
+        
+         this.results = this.searchTerm;
+         
+      }
+*/
 }
