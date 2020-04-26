@@ -1,15 +1,15 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start" defaulthref="/tabs/quotes">
+  <ion-toolbar class="quotes-menu">
+    <ion-buttons slot="start" defaulthref="/tabs/(quotes)">
     <ion-back-button ></ion-back-button>
     </ion-buttons>
     <ion-title>{{quote?.author}} Details Quote</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
  
-  <ion-card *ngIf="quote">
+  <ion-card *ngIf="quote" class="movie-card" text-center>
     <ion-card-header>
       <ion-card-title>
         {{ quote.author }}

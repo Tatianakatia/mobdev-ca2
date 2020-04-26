@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-toolbar class="deaths-menu">
-		<ion-title>My Deaths Search by Responsible</ion-title>
+		<ion-title>My Deaths Search</ion-title>
 		<ion-back-button></ion-back-button>
 	</ion-toolbar>
 </ion-header>
@@ -10,7 +10,13 @@
   <ion-list>
     <div *ngFor="let death of deaths | async">
       <ion-item *ngIf="searchDeath(death)">
-      <p>{{ death.death }} </p>
+            <ion-label text-wrap> 
+            <h3>{{ death.responsible }}</h3>
+            <h5><ion-icon class="death-details" name="person-add-outline"></ion-icon> {{ death.death }}</h5>
+            <h5><ion-icon class="death-details" name="warning-outline"></ion-icon> {{ death.cause }}</h5>
+            <h5><ion-icon class="death-details" name="skull" slot="start"></ion-icon> {{ death.number_of_deaths }}</h5>
+          </ion-label>
+     
     </ion-item>
     </div>
   </ion-list> 

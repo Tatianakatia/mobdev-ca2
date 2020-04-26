@@ -2,6 +2,7 @@ import { ApiService } from '../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
     selector: 'app-quote-details',
@@ -10,13 +11,13 @@ import { IonInfiniteScroll } from '@ionic/angular';
 })
 export class QuoteDetailsPage implements OnInit {
     
-
     quote: any;
     quoteId = null;
 
     constructor(private activatedRoute: ActivatedRoute,
         private api: ApiService,
-        private infiniteScroll: IonInfiniteScroll
+        private infiniteScroll: IonInfiniteScroll,
+                   private navCtrl: NavController
         ) { }
 
     ngOnInit() {
@@ -34,10 +35,10 @@ export class QuoteDetailsPage implements OnInit {
 
       // App logic to determine if all data is loaded
       // and disable the infinite scroll
-      if (this.quote.length == 1000) {
+      if (this.quote.length == 10) {
         event.target.disabled = true;
       }
-    }, 500);
+    }, 5);
   }
 
   toggleInfiniteScroll() {
