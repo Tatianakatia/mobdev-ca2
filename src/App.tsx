@@ -1,13 +1,30 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 
-import './styles/global.css';
-import 'leaflet/dist/leaflet.css';
+import SwitchTheme from './components/SwitchThemer';
+
+import light from './styles/themes/light';
+import dark from './styles/themes/dark';
 
 import Routes from './routes';
 
+import GlobalStyle from './styles/global';
+import 'leaflet/dist/leaflet.css';
+import usePersistedState from './utils/usePersistedState';
+
 function App() {
+  const [theme, setTheme] = usePersistedState('theme', light);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? dark : light)
+  }
+
   return (
-    <Routes />
+    <ThemeProvider theme={theme}>
+      <SwitchTheme toppleTheme={toggleTheme} />
+      <GlobalStyle />
+      <Routes />
+    </ThemeProvider> 
   );
 }
 
